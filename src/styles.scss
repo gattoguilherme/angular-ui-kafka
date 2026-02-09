@@ -1,0 +1,69 @@
+/* Theme colors */
+$primary-black: #000;
+$primary-orange: #ff6600;
+
+/* Global styles */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  color: $primary-black;
+  font-weight: 600;
+}
+
+/* Bootstrap customizations */
+.btn-warning {
+  background-color: $primary-orange;
+  border-color: $primary-orange;
+  color: white;
+
+  &:hover:not(:disabled) {
+    background-color: darken($primary-orange, 10%);
+    border-color: darken($primary-orange, 10%);
+    color: white;
+  }
+
+  &:focus {
+    background-color: darken($primary-orange, 10%);
+    border-color: darken($primary-orange, 10%);
+    box-shadow: 0 0 0 0.25rem rgba($primary-orange, 0.5);
+    color: white;
+  }
+
+  &:active {
+    background-color: darken($primary-orange, 15%);
+    border-color: darken($primary-orange, 15%);
+    color: white;
+  }
+
+  &:disabled {
+    background-color: lighten($primary-orange, 20%);
+    border-color: lighten($primary-orange, 20%);
+  }
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: $primary-orange;
+  box-shadow: 0 0 0 0.25rem rgba($primary-orange, 0.25);
+}
+
+.bg-dark {
+  background-color: $primary-black !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+  }
+}

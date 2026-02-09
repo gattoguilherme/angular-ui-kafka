@@ -1,0 +1,42 @@
+.toast-container {
+  z-index: 9999;
+  min-width: 300px;
+  max-width: 500px;
+}
+
+.alert {
+  animation: slideIn 0.3s ease-out;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 0.75rem;
+
+  &.alert-success {
+    background-color: #28a745;
+    color: white;
+    border: none;
+
+    .btn-close {
+      filter: brightness(0) invert(1);
+    }
+  }
+
+  &.alert-danger {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+
+    .btn-close {
+      filter: brightness(0) invert(1);
+    }
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

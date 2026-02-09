@@ -1,0 +1,66 @@
+<div class="card shadow-sm">
+  <div class="card-header bg-dark text-white">
+    <h2 class="h4 mb-0">Coffee Order Form</h2>
+  </div>
+  <div class="card-body">
+    <form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
+      <!-- Customer Name Field -->
+      <div class="mb-3">
+        <label for="customer-name" class="form-label">Customer Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="customer-name"
+          formControlName="customer_name"
+          [class.is-invalid]="customerName.invalid && customerName.touched"
+          placeholder="Enter customer name"
+        />
+        @if (customerName.invalid && customerName.touched) {
+          <div class="invalid-feedback d-block">
+            @if (customerName.errors?.['required']) {
+              <span>Customer name is required</span>
+            }
+            @if (customerName.errors?.['invalidCustomerName']) {
+              <span>{{ customerName.errors?.['invalidCustomerName'].message }}</span>
+            }
+          </div>
+        }
+      </div>
+
+      <!-- Coffee Type Field -->
+      <div class="mb-3">
+        <label for="coffee-type" class="form-label">Coffee Type</label>
+        <select
+          class="form-select"
+          id="coffee-type"
+          formControlName="coffee_type"
+          [class.is-invalid]="coffeeType.invalid && coffeeType.touched"
+        >
+          <option value="">Select a coffee type</option>
+          @for (type of coffeeTypes; track type) {
+            <option [value]="type">{{ type }}</option>
+          }
+        </select>
+        @if (coffeeType.invalid && coffeeType.touched) {
+          <div class="invalid-feedback d-block">
+            <span>Coffee type is required</span>
+          </div>
+        }
+      </div>
+
+      <!-- Submit Button -->
+      <button
+        type="submit"
+        class="btn btn-warning w-100"
+        [disabled]="isSubmitDisabled()"
+      >
+        @if (isLoading()) {
+          <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+          <span>Placing Order...</span>
+        } @else {
+          <span>Place Order</span>
+        }
+      </button>
+    </form>
+  </div>
+</div>
